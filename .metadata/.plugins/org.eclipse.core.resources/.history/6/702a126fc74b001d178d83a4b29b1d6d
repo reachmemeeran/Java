@@ -1,0 +1,65 @@
+package com.meeran.gs.learning;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+public class MostFrequentWords {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> list1 = top3("  khg'k  ");
+
+		for (String str : list1) {
+			System.out.print(str + " ");
+		}
+		
+		Integer[] array = new Integer[] {1,2,3,4,5,6,7,8,9};
+		List<Integer> list = new ArrayList<Integer>();
+	    Arrays.sort(array);
+	    for(Integer i: array){
+	      String s = Integer.toString(i);
+	      String out = "";
+	      for(int k=0;k<s.length();k++) {
+	    	  Character ch = s.charAt(k);
+	    	  if(ch =='3') {
+	    		  ch='7';
+	    	  }else if(ch=='7') {
+	    		  ch='3';
+	    	  }
+	    	  out+=ch;
+	      }
+	      list.add(Integer.parseInt(out));
+	    }
+	    
+	    
+	}
+
+	public static List<String> top3(String s) {
+		// Your code here
+
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		Pattern pattern = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9']");
+		Matcher matcher = pattern.matcher(s);
+		
+		while(matcher.find()) {
+			String str = matcher.group().toLowerCase();
+			map.put(str, map.getOrDefault(str, 1) +1);
+		}
+		
+		return map.entrySet()
+				.stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+				.limit(3)
+				.map(Map.Entry::getKey)
+				.collect(Collectors.toList());
+
+	}
+
+}

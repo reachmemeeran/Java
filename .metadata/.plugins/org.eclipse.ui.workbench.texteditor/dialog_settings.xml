@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="-&gt;&quot;+"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value=", MinPathSquare."/>
+			<item value="assertEquals("/>
+			<item value="&gt;&gt;&gt;&gt;  "/>
+			<item value="==="/>
+			<item value="===E"/>
+			<item value=" == "/>
+			<item value="assert lengthOfCycle"/>
+			<item value=");"/>
+			<item value="), "/>
+			<item value="testing(DoubleLinear."/>
+			<item value="&quot;,"/>
+			<item value="&quot;, PigLatin."/>
+			<item value=",Solution."/>
+			<item value="&quot;+makeReadable"/>
+			<item value=", HumanReadableTime."/>
+		</list>
+		<list key="replacehistory">
+			<item value="-&gt;&quot;+"/>
+			<item value="System.out.println(&quot;Resut-"/>
+			<item value="   &gt;&gt;&gt;&gt;"/>
+			<item value="&lt;&lt;&lt;&lt;  "/>
+			<item value="&gt;&gt;&gt;&gt;  E"/>
+			<item value="&gt;&gt;&gt;&gt;E"/>
+			<item value="&gt;&gt;&gt;&gt;"/>
+			<item value=")+(&quot;"/>
+			<item value="System.out.println(findCycle"/>
+			<item value="&quot;);"/>
+			<item value=")+&quot;"/>
+			<item value="System.out.println(&quot;Result - &quot;+ "/>
+			<item value=" &quot; +"/>
+			<item value="System.out.println(&quot;Result - "/>
+			<item value=" is &quot;+makeReadable"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1088"/>
+		<item key="DIALOG_Y_ORIGIN" value="432"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

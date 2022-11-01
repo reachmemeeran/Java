@@ -1,0 +1,47 @@
+package com.meeran.gs.learning;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class BalancedParanthesis {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Result - true " + validParentheses("{[()]}"));
+		/*
+		 * System.out.println("Result - true " + validParentheses("{{[[(())]]}}"));
+		 * System.out.println("Result - true " + validParentheses("[]{}"));
+		 * System.out.println("Result - false " + validParentheses("{[(])}"));
+		 * System.out.println("Result - false " + validParentheses("[({}"));
+		 * System.out.println("Result - false " + validParentheses("[]}"));
+		 * System.out.println("Result - false " + validParentheses("[}]"));
+		 */
+	}
+
+	public static boolean validParentheses(String parens) {
+		Deque<Character> deque = new LinkedList<>();
+		for (char ch : parens.toCharArray()) {
+			if (ch == '{' || ch == '[' || ch == '(') {
+				System.out.println("+++++++"+ch);
+				deque.add(ch);
+			} else {
+				if (!deque.isEmpty()) {
+					System.out.println("------"+ch);
+					System.out.println("Top--"+deque.getFirst());
+					System.out.println("Top-11-"+deque.peekFirst());
+					System.out.println("Top-11-"+deque.getLast());
+					if ((deque.peekFirst() == '{' && ch == '}') 
+							|| (deque.peekFirst() == '[' && ch == ']')
+							|| (deque.peekFirst() == '(' && ch == ')')) {
+						deque.removeFirst();
+					}
+				} else {
+					return false;
+				}
+			}
+		}
+		System.out.println("deque-->"+deque.toString());
+		return deque.isEmpty() ? true : false;
+	}
+
+}

@@ -1,0 +1,32 @@
+package com.meeran.gs.learning;
+
+import java.util.Arrays;
+
+public class EightSecondSmallest {
+	public static void main(String Args[]) {
+		int arr[] = {12, 35, 1, 35, 34, 1};
+		System.out.println("Second Smallest is "+getSecondSmallest(arr));
+		int arr1[] = {12, 35, 1, 10, 34, 1};
+		System.out.println("Second Smallest is "+getSecondSmallest(arr1));
+		int arr2[] = {12, 12, 12, 12, 12, 12};
+		System.out.println("Second Smallest is "+getSecondSmallest(arr2));
+		int arr3[] = {12};
+		System.out.println("Second Smallest is "+getSecondSmallest(arr3));
+		int arr4[] = {2,5,6,8};
+		System.out.println("Second Smallest is "+getSecondSmallest(arr4));
+	}
+	
+	static int getSecondSmallest(int[] arr) {
+		int result=-1;
+		
+		Arrays.sort(arr);
+		
+		for(int i=0; i<arr.length-1; i++) {
+			if(arr[i]!=arr[i+1]) {
+				return arr[i+1];
+			}
+		}
+		
+		return result;
+	}
+}

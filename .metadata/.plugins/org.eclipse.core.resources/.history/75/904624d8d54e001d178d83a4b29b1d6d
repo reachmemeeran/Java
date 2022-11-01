@@ -1,0 +1,37 @@
+package com.meeran.gs.learning;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class TwiceLinear {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Result - "+ dblLinear(10)+"- 22");
+        System.out.println("Result - "+ dblLinear(20)+"- 57");
+        System.out.println("Result - "+ dblLinear(30)+"- 91");
+        System.out.println("Result - "+ dblLinear(50)+"- 175");
+	}
+	
+	public static int dblLinear (int n) {
+        // your code
+      List<Integer> list = new ArrayList<Integer>();
+      
+      list.add(1);
+      int y=0; int z=0;
+      for(int i=0; i<=n;i++){
+        y = 2*list.get(i)+1;
+        z = 3*list.get(i)+1;
+        list.add(y);
+        list.add(z);
+   }
+      
+     Collections.sort(list);
+     list = list.stream().distinct().collect(Collectors.toList());
+     System.out.println(list.toString());
+      return list.get(n);
+    }
+
+}

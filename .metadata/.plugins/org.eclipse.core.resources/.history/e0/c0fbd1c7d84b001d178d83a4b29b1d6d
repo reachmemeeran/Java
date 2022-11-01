@@ -1,0 +1,62 @@
+package com.meeran.gs.learning;
+
+import java.util.*;
+public class Seven2DAverageFile {
+	public static void main(String Args[]) {
+		String[] file = {"Meeran","30","40","70",
+				"Tony","60","70","80",
+				"Antony", "99","98","90",
+				"James","90","98","99"};
+		
+		List<String> bestGrade = bestAverage(file);
+		
+		System.out.print("Best Student(s): ");
+		for(int i=0; i<bestGrade.size()-1; i++) {
+			System.out.print( bestGrade.get(i)+", ");
+		}
+		System.out.println(" and his Average is: "+bestGrade.get(bestGrade.size()-1));
+	}
+	
+	static List<String> bestAverage(String[] file) {
+		double average , bestAverage =0;
+		String bestStudent="";
+		List<String> bestGrade = new ArrayList<String>();
+		for(int i=0; i<file.length; i+=4) {
+			average = (Integer.parseInt(file[i+1])+Integer.parseInt(file[i+2])+
+					Integer.parseInt(file[i+3]))/3;
+			if(average>bestAverage) {
+				bestAverage=average;
+				bestStudent=file[i];
+				bestGrade.clear();
+				bestGrade.add(bestStudent);
+			}else if(average==bestAverage) {
+				bestStudent=file[i];
+				bestGrade.add(bestStudent);
+			}
+		}
+		bestGrade.add(Double.toString(bestAverage));
+		return bestGrade;
+	}
+	
+	
+	
+	List<String> bestAverage1(String[] file){
+		double average,bestAverage=0;
+		List<String> bestStudent = new ArrayList<String>();
+		for(int i=0; i<file.length; i+=4) {
+			average= (Integer.parseInt(file[i+1])+Integer.parseInt(file[i+2])
+			+Integer.parseInt(file[i+3]))/3;
+			
+			if(average>bestAverage) {
+				bestAverage = average;
+				bestStudent.clear();
+				bestStudent.add(file[i]);
+			}else if(average == bestAverage){
+				bestStudent.add(file[i]);
+			}
+		}
+		bestStudent.add(Double.toString(bestAverage));
+		
+		return bestStudent;
+	}
+}

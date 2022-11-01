@@ -1,0 +1,90 @@
+package com.meeran.gs.learning.Imp;
+
+public class DistinctIngredients {
+	public static void main(String Args[]) {
+		String str = "ABABCABABCD";
+		System.out.println("Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
+		str = "ABCABCEA";
+		System.out.println("Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
+		str = "A";
+		System.out.println("Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
+		str = "aabbccbbccaabbccbbcc";
+		System.out.println("Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
+
+	}
+	
+	static String getDistinctIngredients(String str) {
+		char current = str.charAt(0);
+		int i=1;
+		StringBuilder result = new StringBuilder();
+		while(i<str.length()) {
+			if(current==str.charAt(i)) {
+				if(2*i < str.length() && (str.substring(0, i).equals(str.substring(i, 2*i)))) {
+					result.append("*");
+					result.append(",");
+					i+=i;
+					continue;
+				}else {
+					result.append(str.charAt(i));
+					result.append(",");
+					i++;
+					continue;
+				}
+			}else {
+				result.append(str.charAt(i));
+				result.append(",");
+				i++;
+				continue;
+			}
+		}
+		return result.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	static String getDistinctIngredients1(String str) {
+		StringBuilder resultStr = new StringBuilder();
+		
+		resultStr.append(str.charAt(0));
+		int i=1;
+		while(i<str.length()) {
+			if(str.charAt(0)==str.charAt(i)) {
+				if(2*i <= str.length() && str.substring(0, i).equals(str.substring(i, 2*i))) {
+					resultStr.append(',');
+					resultStr.append('*');
+					i+=i;
+					continue;
+				}else {
+					resultStr.append(',');
+					resultStr.append(str.charAt(i));
+					i++;
+					continue;
+				}
+			}else {
+				resultStr.append(',');
+				resultStr.append(str.charAt(i));
+				i++;
+				continue;
+			}
+		}
+		return resultStr.toString();
+	}
+}

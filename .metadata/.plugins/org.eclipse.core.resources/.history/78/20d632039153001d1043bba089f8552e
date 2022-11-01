@@ -1,0 +1,35 @@
+package com.meeran.gs.learning;
+
+public class SnailProblem2D {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[][] array
+        = {{1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}};
+		System.out.println("Traverse-->"+traverseSnail(array));
+		
+		int[][] array1
+        = {{1, 2, 3,1},
+        {4, 5, 6,4},
+        {7, 8, 9,7},
+        {7,8,9,7}};
+	}
+
+	private static String traverseSnail(int[][] array) {
+		// TODO Auto-generated method stub
+		
+		// print first row
+		for(int i=0; i<array[0].length;i++) {
+			System.out.print(array[0][i]+", ");
+		}
+		
+		//print last column (except first row last column value)
+		for(int j=1; j<array.length; j++) {
+			System.out.print(array[j][array[0].length-1]+", ");
+		}
+		return null;
+	}
+
+}
