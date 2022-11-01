@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<libraryInfos>
-    <libraryInfo home="C:\Users\meeran.mohammed\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20221004-1257" version="[0.068s][warning][jni,resolve] Re-registering of platform native method: java.lang.PanwHooks.NativeMethodEntry(Ljava/lang/Object;ILjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V from code in a different classloader&#10;17.0.4.1"/>
-    <libraryInfo home="C:\Users\meeran.mohammed\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20221004-1257\jre" version="17.0.4.1"/>
-</libraryInfos>
