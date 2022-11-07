@@ -1,6 +1,5 @@
 package com.meeran.gs.learning.Imp;
 
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -14,20 +13,20 @@ public class Josephus {
                            + josephus1(n, k));
         
         System.out.println("The chosen place is 3 "
-                + josephus1(5, 2));
+                + josephus2(5, 2));
 	}
 	static int josephus(int n, int k) {
-		Deque<Integer> deque = new LinkedList<Integer>();
-		for(int i=1;i<n;i++) {
-			deque.offer(i);
-		}
-		while(deque.size()>1) {
-			for(int i=0;i<k;i++) {
-				deque.offer(deque.remove());
+		Queue<Integer> queue = new LinkedList<Integer>();
+		for(int i=1;i<=n;i++) queue.offer(i);
+		
+		while(queue.size()>1) {
+			
+			for(int delete=k-1; delete>0; delete--) {
+				queue.offer(queue.remove());
 			}
-			deque.remove();
+			queue.remove();
 		}
-		return deque.remove();
+		return queue.remove();
 	}
 	
 	
@@ -66,7 +65,7 @@ public class Josephus {
 		return queue.remove();
 	}
 	
-	static int josephusc2(int n, int k) {
+	static int josephus2(int n, int k) {
 		if(n==1) return 1;
 		else
 			return (josephus(n-1,k)+k-1)%n+1;
