@@ -6,15 +6,11 @@ import org.junit.Test;
 
 public class MaxSumTree {
 	
-	
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 
 	}
 	
 	static int maxSum(TreeNode root) {
-        // TODO: implementation
       if(root==null) return 0;
       int sum=root.value;
       while(root!=null){

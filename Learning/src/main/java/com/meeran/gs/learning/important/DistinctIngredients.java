@@ -1,4 +1,4 @@
-package com.meeran.gs.learning.Imp;
+package com.meeran.gs.learning.important;
 
 public class DistinctIngredients {
 	public static void main(String Args[]) {
