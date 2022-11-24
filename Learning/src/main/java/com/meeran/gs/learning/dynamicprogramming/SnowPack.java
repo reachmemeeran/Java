@@ -20,10 +20,10 @@ public class SnowPack {
 	
 	
 	/*
-	 *                     __
-	 * 			___        | |__  __
-	 *    ___   |  |x_ x x_|   |x_| |__
-	 * ___|  |x_|	  |x_|             |
+	 * 3|                    __
+	 * 2|		 ___         | |__  __
+	 * 1|  ___   |  |X  X  X |    |x_|_|__
+	 * 0|__|__|x_|_____|X |__|___________|
 	 * */
 	public static int computeSnowpack(int[] height) {
 		int left=0,right=height.length-1;
