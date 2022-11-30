@@ -19,7 +19,7 @@ public class NextBiggerNumber {
           }
 		}
 		if (i == 0) {
-			System.out.println("Not possible");
+			return -1;
 		}else {
 			int x = digitList[i - 1], min = i;
 			for (int j = i + 1; j < length; j++)
