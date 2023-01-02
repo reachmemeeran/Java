@@ -1,21 +1,14 @@
 package com.meeran.gs.learning;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
+
+import org.junit.Test;
 
 public class TwoEqualArrays {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int arr1[] = { 3, 5, 2, 5, 2 };
-        int arr2[] = { 2, 3, 5, 5, 2 };
- 
-        // Function call
-        if (areEqual(arr1, arr2))
-            System.out.println("Yes");
-        else
-            System.out.println("No");
-	}
-	
 	public static boolean areEqual(int arr1[], int arr2[]) {
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);
@@ -26,4 +19,13 @@ public class TwoEqualArrays {
 		return true;
 	}
 
+	@Test
+	public void testTwoEqualArrays() {
+		int arr1[] = { 3, 5, 2, 5, 2 };
+        int arr2[] = { 2, 3, 5, 5, 2 };
+        int arr3[] = { 2, 3, 3, 5, 2 };
+        
+        assertTrue(areEqual(arr1, arr2));
+        assertFalse(areEqual(arr1, arr3));
+	}
 }

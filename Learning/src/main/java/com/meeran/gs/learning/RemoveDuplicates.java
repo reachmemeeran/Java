@@ -1,19 +1,15 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.junit.Test;
+
 public class RemoveDuplicates {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Result - 4,6,3  " + Arrays.toString(solve(new int[]{3,4,4,3,6,3})));
-        System.out.println("Result - 1,2,3  " + Arrays.toString(solve(new int[]{1,2,1,2,1,2,3})));
-        System.out.println("Result - 1,2,3,4  " + Arrays.toString(solve(new int[]{1,2,3,4})));
-        System.out.println("Result - 4,5,2,1  " + Arrays.toString(solve(new int[]{1,1,4,5,1,2,1})));    
-	}
-	
 	public static int [] solve(int [] arr){
 		LinkedHashMap<Integer,Boolean> map = new LinkedHashMap<Integer,Boolean>();
 		
@@ -28,6 +24,14 @@ public class RemoveDuplicates {
 			output[j--]=entry.getKey();
 		}
 		return output;
+	}
+	
+	@Test
+	public void testRemoveDuplicates() {
+		assertEquals(Arrays.toString(new int[] {4,6,3}),Arrays.toString(solve(new int[]{3,4,4,3,6,3})));
+        assertEquals(Arrays.toString(new int[] {1,2,3}),Arrays.toString(solve(new int[]{1,2,1,2,1,2,3})));
+        assertEquals(Arrays.toString(new int[] {1,2,3,4}),Arrays.toString(solve(new int[]{1,2,3,4})));
+        assertEquals(Arrays.toString(new int[] {4,5,2,1}),Arrays.toString(solve(new int[]{1,1,4,5,1,2,1})));    
 	}
 
 }

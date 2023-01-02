@@ -1,20 +1,12 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+
 public class NonConsecutiveNum {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Result - "+ Integer.valueOf(6)+" Actual "+ find(new int[]{1, 2, 3, 4, 6, 7, 8}));
-        System.out.println("Result - "+ null+" Actual "+ find(new int[]{1, 2, 3, 4, 5, 6, 7, 8}));
-        System.out.println("Result - "+ Integer.valueOf(6)+" Actual "+ find(new int[]{4, 6, 7, 8, 9, 11}));
-        System.out.println("Result - "+ Integer.valueOf(11)+" Actual "+ find(new int[]{4, 5, 6, 7, 8, 9, 11}));
-        System.out.println("Result - "+ null+" Actual "+ find(new int[]{31, 32}));
-        System.out.println("Result - "+ Integer.valueOf(0)+" Actual "+ find(new int[]{-3, -2, 0, 1}));
-        System.out.println("Result - "+ Integer.valueOf(-1)+" Actual "+ find(new int[]{-5, -4, -3, -1}));
-
-	}
-	
-	static Integer find(int[] arr) {
+	private Integer find(int[] arr) {
 		int firstNum = arr[0];
 		
 		for(int i=1; i<arr.length; i++) {
@@ -23,6 +15,17 @@ public class NonConsecutiveNum {
 			}
 		}
 		return null;
+	}
+	
+	@Test
+	public void testNonConsecutiveNum() {
+		assertEquals(Integer.valueOf(6),find(new int[]{1, 2, 3, 4, 6, 7, 8}));
+        assertEquals(null,find(new int[]{1, 2, 3, 4, 5, 6, 7, 8}));
+        assertEquals(Integer.valueOf(6),find(new int[]{4, 6, 7, 8, 9, 11}));
+        assertEquals(Integer.valueOf(11),find(new int[]{4, 5, 6, 7, 8, 9, 11}));
+        assertEquals(null,find(new int[]{31, 32}));
+        assertEquals(Integer.valueOf(0),find(new int[]{-3, -2, 0, 1}));
+        assertEquals(Integer.valueOf(-1),find(new int[]{-5, -4, -3, -1}));
 	}
 
 }

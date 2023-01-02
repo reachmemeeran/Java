@@ -1,15 +1,13 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.TreeSet;
+
+import org.junit.Test;
 
 public class UglyNumber {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int n = 150;
-        System.out.println(nthUglyNumber(n));
-	}
-	
 	static int nthUglyNumber(int n) {
 		
 		TreeSet<Integer> set = new TreeSet<>();
@@ -24,6 +22,12 @@ public class UglyNumber {
 			
 		}
 		return set.pollFirst();
+	}
+	
+	@Test
+	public void testUglyNumber() {
+		int n = 150;
+        assertEquals(5832,nthUglyNumber(n));
 	}
 
 }

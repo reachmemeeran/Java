@@ -1,22 +1,26 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.Test;
+
 public class ReverseAString {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String s = "getting good at coding needs a lot of practice" ;
-		System.out.println(reverseAString(s));
-	}
-	static String reverseAString(String s) {
+	String reverseAString(String s) {
 		List<String> list = new ArrayList<String>();
 		list = Arrays.asList(s.split(" "));
 		Collections.reverse(list);
 		return String.join(" ", list);
 	}
-
+	
+	@Test
+	public void testReverseAString() {
+		String s = "getting good at coding needs a lot of practice" ;
+		assertEquals("practice of lot a needs coding at good getting",reverseAString(s));
+	}
 }

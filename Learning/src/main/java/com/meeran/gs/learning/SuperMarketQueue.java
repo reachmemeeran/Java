@@ -8,11 +8,6 @@ import org.junit.Test;
 
 public class SuperMarketQueue {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public static int solveSuperMarketQueue(int[] customers, int n) {
 	      
 	 int[] result = new int[n];

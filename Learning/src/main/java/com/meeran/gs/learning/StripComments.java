@@ -1,21 +1,14 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import org.junit.Test;
+
 public class StripComments {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Result - apples, pears\ngrapes\nbananas " +
-				stripComments( "apples, pears # and bananas\ngrapes\nbananas !apples " , new String[] { "# " + "!" } )
-		);
-
-		System.out.println("Result - a\nc\nd"+
-				stripComments( "a #b\nc\nd $e f g" , new String[] { "#", "$" } )
-		);
-	}
-	
 	public static String stripComments(String text, String[] commentSymbols) {
 	    return text.replaceAll(" *([" + String.join("", commentSymbols) + "].*)?(\n|$)", "$2");
 	  }
@@ -34,6 +27,17 @@ public class StripComments {
 		return Arrays.stream(text.split("\n"))
 				.map(x -> x.replaceAll(pattern,""))
 				.collect(Collectors.joining("\n"));
+	}
+	
+	@Test
+	public void testStripComments() {
+		assertEquals("apples,pears\ngrapes\nbananas" ,
+				stripComments2( "apples,pears # and bananas\ngrapes\nbananas !apples " , new String[] { "# " + "!" } )
+		);
+
+		assertEquals("a\nc\nd",
+				stripComments2( "a #b\nc\nd $e f g" , new String[] { "#", "$" } )
+		);
 	}
 
 }

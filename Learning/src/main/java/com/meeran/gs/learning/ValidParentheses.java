@@ -1,16 +1,12 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.Test;
+
 public class ValidParentheses {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	  System.out.println("Result - true " +validParentheses( "()" ));  
-	  System.out.println("Result - false " +validParentheses( "())" ));
-	  System.out.println("Result - true " +validParentheses( "32423(sgsdg)" ));  
-	  System.out.println("Result - false " +validParentheses( "(dsgdsg))2432" ));
-	  System.out.println("Result - true " +validParentheses( "adasdasfa" ));
-	}
-	
 	public static boolean validParentheses(String parens){
 	    //Put code below
 		int count=0;
@@ -21,5 +17,13 @@ public class ValidParentheses {
 		}
 		return count==0 ? true : false;	
 	  }
-
+	
+	@Test
+	public void testValidParentheses() {
+		assertTrue(validParentheses( "()" ));  
+		assertFalse(validParentheses( "())" ));
+		assertTrue(validParentheses( "32423(sgsdg)" ));  
+		assertFalse(validParentheses( "(dsgdsg))2432" ));
+		assertTrue(validParentheses( "adasdasfa" ));
+	}
 }
