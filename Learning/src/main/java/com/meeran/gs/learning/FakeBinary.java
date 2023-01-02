@@ -1,15 +1,12 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+
 // Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and 
 // above with '1'. Return the resulting string.
 public class FakeBinary {
-
-	public static void main(String[] args) {
-		System.out.println("Result - "+ "01011110001100111 "+ fakeBin("45385593107843568"));
-	      System.out.println("Result - "+ "101000111101101 "+ fakeBin("509321967506747")); 
-	      System.out.println("Result - "+ "011011110000101010000011011 "+ fakeBin("366058562030849490134388085"));
-
-	}
 	
 	public static String fakeBin1(String numberString) {
 		
@@ -27,5 +24,19 @@ public class FakeBinary {
 	public static String fakeBin(String numberString) {
         return numberString.replaceAll("[0-4]", "0").replaceAll("[5-9]", "1");
     }
+	
+	@Test
+	public void testFakeBin() {
+		assertEquals("01011110001100111", fakeBin("45385593107843568"));
+		assertEquals("101000111101101", fakeBin("509321967506747"));
+		assertEquals("011011110000101010000011011", fakeBin("366058562030849490134388085"));
+	}
+	
+	@Test
+	public void testFakeBin1() {
+		assertEquals("01011110001100111", fakeBin1("45385593107843568"));
+		assertEquals("101000111101101", fakeBin1("509321967506747"));
+		assertEquals("011011110000101010000011011", fakeBin1("366058562030849490134388085"));
+	}
 	
 }

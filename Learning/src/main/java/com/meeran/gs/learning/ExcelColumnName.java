@@ -1,15 +1,11 @@
 package com.meeran.gs.learning;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+
 public class ExcelColumnName {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("1--->"+titleToNumber("A"));
-		System.out.println("28--->"+titleToNumber("AB"));
-		
-		System.out.println("AB--->"+numberToTitle(28));
-	}
-	
 	static int titleToNumber(String s) {
 		int result=0;
 		for(int i=0; i<s.length();i++) {
@@ -29,6 +25,17 @@ public class ExcelColumnName {
 			
 		}
 		return result;
+	}
+	
+	@Test
+	public void testTitleToNumber() {
+		assertEquals(1, titleToNumber("A"));
+		assertEquals(28, titleToNumber("AB"));
+	}
+	
+	@Test
+	public void testNumberToTitle() {
+		assertEquals("AB", numberToTitle(28));
 	}
 
 }

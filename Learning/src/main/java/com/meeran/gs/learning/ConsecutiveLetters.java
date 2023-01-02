@@ -3,7 +3,12 @@
  */
 package com.meeran.gs.learning;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
+
+import org.junit.Test;
 
 /**
  * @author meeran.mohammed
@@ -11,16 +16,6 @@ import java.util.Arrays;
  */
 public class ConsecutiveLetters {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		System.out.println("Result - true " + solve("abc"));
-        System.out.println("Result - false " + solve("abd"));
-        System.out.println("Result - true " + solve("dabc"));
-        System.out.println("Result - false " + solve("abbc"));
-        System.out.println("Result - true " + solve("v"));
-	}
 	
 	public static boolean solve(String s){
 		
@@ -33,6 +28,15 @@ public class ConsecutiveLetters {
 			}
 		}
 		return true;
+	}
+	
+	@Test
+	public void testConsecutiveLetters() {
+		assertTrue(solve("abc"));
+		assertFalse(solve("abd"));
+		assertTrue(solve("dabc"));
+		assertFalse(solve("abbc"));
+		assertTrue(solve("v"));
 	}
 
 }
