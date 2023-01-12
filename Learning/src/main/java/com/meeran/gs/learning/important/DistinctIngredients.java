@@ -1,17 +1,10 @@
 package com.meeran.gs.learning.important;
 
-public class DistinctIngredients {
-	public static void main(String Args[]) {
-		String str = "ABABCABABCD";
-		System.out.println("A,B,*,C,*,D Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
-		str = "ABCABCEA";
-		System.out.println("A,B,C,*,E,A Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
-		str = "A";
-		System.out.println("A Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
-		str = "aabbccbbccaabbccbbcc";
-		System.out.println("a,*,b,b,c,c,b,b,c,c,* Distinct Ingredients for the Strig "+str+" is "+getDistinctIngredients(str));
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-	}
+import org.junit.Test;
+
+public class DistinctIngredients {
 	
 	static String getDistinctIngredients(String str) {
 		StringBuilder output = new StringBuilder();
@@ -33,26 +26,6 @@ public class DistinctIngredients {
 		}
 		return output.toString().substring(0,output.length()-1);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	static String getDistinctIngredients1(String str) {
 		StringBuilder resultStr = new StringBuilder();
@@ -80,5 +53,13 @@ public class DistinctIngredients {
 			}
 		}
 		return resultStr.toString();
+	}
+	
+	@Test
+	public void testDistinctIngredients() {
+		assertEquals("A,B,*,C,*,D",getDistinctIngredients("ABABCABABCD"));
+		assertEquals("A,B,C,*,E,A",getDistinctIngredients("ABCABCEA"));
+		assertEquals("A",getDistinctIngredients("A"));
+		assertEquals("a,*,b,b,c,c,b,b,c,c,*",getDistinctIngredients("aabbccbbccaabbccbbcc"));
 	}
 }
