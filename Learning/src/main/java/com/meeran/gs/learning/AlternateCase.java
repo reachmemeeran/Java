@@ -70,5 +70,24 @@ public class AlternateCase {
 		assertEquals("12345", toAlternativeString2("12345"));
 		assertEquals("1A2B3C4D5E", toAlternativeString2("1a2b3c4d5e"));
 	}
+	
+	@Test
+	public void testAlternativeString3() {
+		assertEquals("HELLO WORLD", toAlternativeString3("hello world"));
+		assertEquals("hello world", toAlternativeString3("HELLO WORLD"));
+		assertEquals("HELLO world", toAlternativeString3("hello WORLD"));
+		assertEquals("hEllO wOrld", toAlternativeString3("HeLLo WoRLD"));
+		assertEquals("12345", toAlternativeString3("12345"));
+		assertEquals("1A2B3C4D5E", toAlternativeString3("1a2b3c4d5e"));
+	}
+	
+	String toAlternativeString3(String str) {
+		StringBuffer outputStr = new StringBuffer();
+		for(Character ch: str.toCharArray()) {
+			if(Character.isLowerCase(ch)) outputStr.append(Character.toUpperCase(ch));
+			else outputStr.append(Character.toLowerCase(ch));
+		}
+		return outputStr.toString();
+	}
 
 }
