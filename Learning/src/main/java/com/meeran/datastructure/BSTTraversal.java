@@ -15,32 +15,32 @@ import java.util.LinkedList;
 
 */
 
-class Main {
+class BSTTraversal {
 	public static void main(String args[]) {
 // root
-		Node node = new Node(1);
+		BSTNode node = new BSTNode(1);
 
 // Left side of the tree
-		node.left = new Node(2);
-		node.left.left = new Node(3);
-		node.left.right = new Node(4);
+		node.left = new BSTNode(2);
+		node.left.left = new BSTNode(3);
+		node.left.right = new BSTNode(4);
 
-		node.left.left.left = new Node(5);
-		node.left.left.right = new Node(6);
+		node.left.left.left = new BSTNode(5);
+		node.left.left.right = new BSTNode(6);
 
-		node.left.right.left = new Node(7);
-		node.left.right.right = new Node(8);
+		node.left.right.left = new BSTNode(7);
+		node.left.right.right = new BSTNode(8);
 
 // Right side of the tree
-		node.right = new Node(9);
-		node.right.left = new Node(10);
-		node.right.right = new Node(11);
+		node.right = new BSTNode(9);
+		node.right.left = new BSTNode(10);
+		node.right.right = new BSTNode(11);
 
-		node.right.left.left = new Node(12);
-		node.right.left.right = new Node(13);
+		node.right.left.left = new BSTNode(12);
+		node.right.left.right = new BSTNode(13);
 
-		node.right.right.left = new Node(14);
-		node.right.right.right = new Node(15);
+		node.right.right.left = new BSTNode(14);
+		node.right.right.right = new BSTNode(15);
 
 		PrintTreeNodeData tree = new PrintTreeNodeData();
 		System.out.print("\nIn-Order Traversal is : ");
@@ -72,11 +72,11 @@ class Main {
 	}
 }
 
-class Node {
+class BSTNode {
 	int data;
-	Node left, right;
+	BSTNode left, right;
 
-	public Node(int data) {
+	public BSTNode(int data) {
 		this.data = data;
 		this.left = this.right = null;
 	}
@@ -84,7 +84,7 @@ class Node {
 
 class PrintTreeNodeData {
 //nLR
-	public void preOrder(Node node) {
+	public void preOrder(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -94,7 +94,7 @@ class PrintTreeNodeData {
 	}
 
 //LnR
-	public void inOrder(Node node) {
+	public void inOrder(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -104,7 +104,7 @@ class PrintTreeNodeData {
 	}
 
 //LRn
-	public void postOrder(Node node) {
+	public void postOrder(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -114,7 +114,7 @@ class PrintTreeNodeData {
 	}
 
 //L
-	public void leftSide(Node node) {
+	public void leftSide(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -123,7 +123,7 @@ class PrintTreeNodeData {
 	}
 
 //R
-	public void rightSide(Node node) {
+	public void rightSide(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -132,7 +132,7 @@ class PrintTreeNodeData {
 	}
 
 //L (reverse)
-	public void leftSideOutline(Node node) {
+	public void leftSideOutline(BSTNode node) {
 		if (node == null) {
 			return;
 		}
@@ -140,7 +140,7 @@ class PrintTreeNodeData {
 		System.out.print(node.data + " ");
 	}
 
-	public int depthOfTree(Node node, int depth) {
+	public int depthOfTree(BSTNode node, int depth) {
 		if (node == null) {
 			return depth;
 		}
@@ -155,12 +155,12 @@ class PrintTreeNodeData {
 		return Math.max(left, right);
 	}
 
-	public void printTree(Node node, int depth) {
+	public void printTree(BSTNode node, int depth) {
 
 		if (node == null) {
 			return;
 		}
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<BSTNode> queue = new LinkedList<BSTNode>();
 
 		queue.add(node);
 
@@ -173,7 +173,7 @@ class PrintTreeNodeData {
 				System.out.print("     ");
 			}
 			while (nodeCount > 0) {
-				Node queueNode = queue.peek();
+				BSTNode queueNode = queue.peek();
 				System.out.print("(" + queueNode.data + ")");
 
 				for (int j = depth; j > 0; j--) {
@@ -201,11 +201,11 @@ class PrintTreeNodeData {
 		}
 	}
 
-	public void printTr(Node node, int depth) {
+	public void printTr(BSTNode node, int depth) {
 		if (node == null) {
 			return;
 		}
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<BSTNode> queue = new LinkedList<BSTNode>();
 		queue.add(node);
 
 		while (true) {
@@ -217,7 +217,7 @@ class PrintTreeNodeData {
 				System.out.print("    ");
 			}
 			while (nodeCount > 0) {
-				Node queueNode = queue.peek();
+				BSTNode queueNode = queue.peek();
 				System.out.print("[" + queueNode.data + "]");
 				for (int j = depth; j > 0; j--) {
 					if (j == 1) {
@@ -246,11 +246,11 @@ class PrintTreeNodeData {
 		}
 	}
 
-	public void printLastLeft(Node node, int depth) {
+	public void printLastLeft(BSTNode node, int depth) {
 		if (node == null) {
 			return;
 		}
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<BSTNode> queue = new LinkedList<BSTNode>();
 		queue.add(node);
 		int count = 1;
 		while (true) {
@@ -260,7 +260,7 @@ class PrintTreeNodeData {
 			}
 
 			while (nodeCount > 0) {
-				Node queueNode = queue.peek();
+				BSTNode queueNode = queue.peek();
 
 				if (queueNode.left != null) {
 					queue.add(queueNode.left);
@@ -280,11 +280,11 @@ class PrintTreeNodeData {
 		}
 	}
 
-	public void printLastRight(Node node, int depth) {
+	public void printLastRight(BSTNode node, int depth) {
 		if (node == null) {
 			return;
 		}
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<BSTNode> queue = new LinkedList<BSTNode>();
 		queue.add(node);
 		int count = 1;
 		while (true) {
@@ -294,7 +294,7 @@ class PrintTreeNodeData {
 			}
 
 			while (nodeCount > 0) {
-				Node queueNode = queue.peek();
+				BSTNode queueNode = queue.peek();
 
 				if (queueNode.left != null) {
 					queue.add(queueNode.left);
