@@ -1,28 +1,31 @@
 package com.meeran.datastructure;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList {
 
-	private Node head;
-    private Node tail;
+	private LLNode head;
+    private LLNode tail;
     private int length;
-    class Node{
+    class LLNode{
         int value;
-        Node next;
+        LLNode next;
 
-        Node(int value) {
+        LLNode(int value) {
             this.value=value;
         }
     }
 
     LinkedList(int value){
-        Node newNode = new Node(value);
+        LLNode newNode = new LLNode(value);
         head=newNode;
         tail=newNode;
         length=1;
     }
 
     void printLinkedList(){
-        Node temp = head;
+        LLNode temp = head;
         while(temp!=null){
             System.out.println("Value-->"+temp.value);
             temp=temp.next;
@@ -36,10 +39,18 @@ public class LinkedList {
     void getTail(){
         if(tail !=null) System.out.println("Tail is : "+tail.value);
     }
+    
+    public LLNode getHeadNode(){
+        return head;
+    }
+
+    public LLNode getTailNode(){
+        return tail;
+    }
 
     //Insert last
     void append(int value){
-        Node newNode = new Node(value);
+        LLNode newNode = new LLNode(value);
         if(length==0){
             head=newNode;
             tail=newNode;
@@ -52,7 +63,7 @@ public class LinkedList {
 
     // Insert First
     void prepend(int value){
-        Node newNode = new Node(value);
+        LLNode newNode = new LLNode(value);
         if (length == 0) {
             head = newNode;
             tail = newNode;
@@ -64,9 +75,9 @@ public class LinkedList {
     }
 
     //Remove First
-    Node removeFirst(){
+    LLNode removeFirst(){
         if(length==0) return null;
-        Node temp=head;
+        LLNode temp=head;
         head=head.next;
         temp.next = null;
         length--;
@@ -77,10 +88,10 @@ public class LinkedList {
     }
 
     //Remove Last
-    Node removeLast(){
+    LLNode removeLast(){
         if(length==0) return null;
-        Node temp=head;
-        Node pre = head;
+        LLNode temp=head;
+        LLNode pre = head;
         while(temp.next!=null){
             pre=temp;
             temp=temp.next;
@@ -95,9 +106,9 @@ public class LinkedList {
         return temp;
     }
 
-    Node get(int index){
+    LLNode get(int index){
         if(index<0 || index >=length ) return null;
-        Node temp = head;
+        LLNode temp = head;
         for(int i=0; i<index; i++){
             temp = temp.next;
         }
@@ -105,27 +116,27 @@ public class LinkedList {
     }
 
     void set(int index, int value){
-        Node temp = get(index);
+        LLNode temp = get(index);
         if(temp!=null) temp.value= value;
     }
 
     void insert(int index, int value){
         if(index==0) prepend(value);
         if(index==length) append(value);
-        Node newNode = new Node(value);
-        Node pre=get(index-1);
+        LLNode newNode = new LLNode(value);
+        LLNode pre=get(index-1);
         newNode.next = pre.next;
         pre.next = newNode;
         length++;
     }
 
-    public Node remove(int index) {
+    public LLNode remove(int index) {
         if (index < 0 || index >= length) return null;
         if (index == 0) return removeFirst();
         if (index == length - 1) return removeLast();
 
-        Node prev = get(index - 1);
-        Node temp = prev.next;
+        LLNode prev = get(index - 1);
+        LLNode temp = prev.next;
 
         prev.next = temp.next;
         temp.next = null;
@@ -134,11 +145,11 @@ public class LinkedList {
     }
 
     public void reverse() {
-        Node temp = head;
+        LLNode temp = head;
         head = tail;
         tail = temp;
-        Node after = temp.next;
-        Node before = null;
+        LLNode after = temp.next;
+        LLNode before = null;
         for (int i = 0; i < length; i++) {
             after = temp.next;
             temp.next = before;
@@ -146,6 +157,105 @@ public class LinkedList {
             temp = after;
         }
     }
+    
+    public LLNode findMiddleNode() {
+    	if(head==null) return null;
+    	LLNode slow = head;
+    	LLNode fast = head;
+    	while(fast!=null && fast.next!=null) {
+    		slow = slow.next;
+    		fast = fast.next.next;
+    	}
+    	return slow;
+    }
+    
+    public boolean hasLoop() {
+    	if(head==null) return false;
+    	LLNode slow = head;
+    	LLNode fast = head;
+    	while(fast!=null && fast.next!=null) {
+    		slow = slow.next;
+    		fast = fast.next.next;
+    		if(slow==fast) return true;
+    	}
+    	return false;
+    }
+    
+    public LLNode findKthFromEnd(int k) {
+    	LLNode fast = head;
+    	LLNode slow = head;
+    	for(int i=0; i<k; i++) {
+    		if(fast==null) return null;
+    		fast = fast.next;
+    	}
+    	
+    	while(fast!=null) {
+    		slow=slow.next;
+    		fast=fast.next;
+    	}
+    	return slow;
+    }
+    
+    public void removeDuplicates() {
+    	Set<Integer> values = new HashSet<>();
+    	LLNode current = head;
+    	LLNode previous = null;
+    	while(current != null){
+    		if(values.contains(current.value)) {
+    			previous.next = current.next;
+    			length--;
+    		}else {
+    			values.add(current.value);
+    			previous=current;
+    		}
+    		current=current.next;
+    	}
+    }
+    
+    public void reverseBetween(int m, int n) {
+    	if(head==null) return;
+    	LLNode dummy = new LLNode(0);
+    	dummy.next = head;
+    	LLNode previous = dummy;
+    	
+    	for(int i=0; i<m; i++) previous = previous.next;
+    	
+    	LLNode current = previous.next;
+    	for(int i=0; i<n-m; i++) {
+    		LLNode temp = current.next;
+    		current.next = temp.next;
+    		temp.next = previous.next;
+    		previous.next = temp;
+    	}
+    	
+    	head = dummy.next;
+    }
+    
+    public void partitionList(int x) {
+        if (head == null) return;
+ 
+        LLNode dummy1 = new LLNode(0);
+        LLNode dummy2 = new LLNode(0);
+        LLNode prev1 = dummy1;
+        LLNode prev2 = dummy2;
+        LLNode current = head;
+ 
+        while (current != null) {
+            if (current.value < x) {
+                prev1.next = current;
+                prev1 = current;
+            } else {
+                prev2.next = current;
+                prev2 = current;
+            }
+            current = current.next;
+        }
+ 
+        prev2.next = null;
+        prev1.next = dummy2.next;
+ 
+        head = dummy1.next;
+    }  
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -210,6 +320,34 @@ public class LinkedList {
         System.out.println("----Reverse------");
         ll.reverse();
         ll.printLinkedList();
+        
+        System.out.println("----Middle Node------"+ll.findMiddleNode().value);
+        
+        ll.append(5);
+        ll.append(6);
+        
+        //ll.getTailNode().next = ll.getHeadNode().next;
+        System.out.println(ll.hasLoop());
+        ll.printLinkedList();
+        int k=2;
+        System.out.println(ll.findKthFromEnd(k).value);
+        ll.append(5);
+        ll.append(6);
+        ll.printLinkedList();
+        System.out.println("----Remove Duplicates------");
+        ll.removeDuplicates();
+        ll.printLinkedList();
+        System.out.println("----reverse between 1,3------");
+        ll.reverseBetween(1, 3);
+        ll.printLinkedList();
+        
+        System.out.println("LL before partitionList:");
+        ll.printLinkedList(); 
+
+        ll.partitionList(5);
+
+        System.out.println("\nLL after partitionList:");
+        ll.printLinkedList(); 
 	}
 
 }
