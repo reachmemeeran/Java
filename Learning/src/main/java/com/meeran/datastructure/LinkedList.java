@@ -5,27 +5,19 @@ import java.util.Set;
 
 public class LinkedList {
 
-	private LLNode head;
-    private LLNode tail;
+	private Node head;
+    private Node tail;
     private int length;
-    class LLNode{
-        int value;
-        LLNode next;
-
-        LLNode(int value) {
-            this.value=value;
-        }
-    }
 
     LinkedList(int value){
-        LLNode newNode = new LLNode(value);
+        Node newNode = new Node(value);
         head=newNode;
         tail=newNode;
         length=1;
     }
 
     void printLinkedList(){
-        LLNode temp = head;
+        Node temp = head;
         while(temp!=null){
             System.out.println("Value-->"+temp.value);
             temp=temp.next;
@@ -40,17 +32,17 @@ public class LinkedList {
         if(tail !=null) System.out.println("Tail is : "+tail.value);
     }
     
-    public LLNode getHeadNode(){
+    public Node getHeadNode(){
         return head;
     }
 
-    public LLNode getTailNode(){
+    public Node getTailNode(){
         return tail;
     }
 
     //Insert last
     void append(int value){
-        LLNode newNode = new LLNode(value);
+        Node newNode = new Node(value);
         if(length==0){
             head=newNode;
             tail=newNode;
@@ -63,7 +55,7 @@ public class LinkedList {
 
     // Insert First
     void prepend(int value){
-        LLNode newNode = new LLNode(value);
+        Node newNode = new Node(value);
         if (length == 0) {
             head = newNode;
             tail = newNode;
@@ -75,9 +67,9 @@ public class LinkedList {
     }
 
     //Remove First
-    LLNode removeFirst(){
+    Node removeFirst(){
         if(length==0) return null;
-        LLNode temp=head;
+        Node temp=head;
         head=head.next;
         temp.next = null;
         length--;
@@ -88,10 +80,10 @@ public class LinkedList {
     }
 
     //Remove Last
-    LLNode removeLast(){
+    Node removeLast(){
         if(length==0) return null;
-        LLNode temp=head;
-        LLNode pre = head;
+        Node temp=head;
+        Node pre = head;
         while(temp.next!=null){
             pre=temp;
             temp=temp.next;
@@ -106,9 +98,9 @@ public class LinkedList {
         return temp;
     }
 
-    LLNode get(int index){
+    Node get(int index){
         if(index<0 || index >=length ) return null;
-        LLNode temp = head;
+        Node temp = head;
         for(int i=0; i<index; i++){
             temp = temp.next;
         }
@@ -116,27 +108,27 @@ public class LinkedList {
     }
 
     void set(int index, int value){
-        LLNode temp = get(index);
+        Node temp = get(index);
         if(temp!=null) temp.value= value;
     }
 
     void insert(int index, int value){
         if(index==0) prepend(value);
         if(index==length) append(value);
-        LLNode newNode = new LLNode(value);
-        LLNode pre=get(index-1);
+        Node newNode = new Node(value);
+        Node pre=get(index-1);
         newNode.next = pre.next;
         pre.next = newNode;
         length++;
     }
 
-    public LLNode remove(int index) {
+    public Node remove(int index) {
         if (index < 0 || index >= length) return null;
         if (index == 0) return removeFirst();
         if (index == length - 1) return removeLast();
 
-        LLNode prev = get(index - 1);
-        LLNode temp = prev.next;
+        Node prev = get(index - 1);
+        Node temp = prev.next;
 
         prev.next = temp.next;
         temp.next = null;
@@ -145,11 +137,11 @@ public class LinkedList {
     }
 
     public void reverse() {
-        LLNode temp = head;
+        Node temp = head;
         head = tail;
         tail = temp;
-        LLNode after = temp.next;
-        LLNode before = null;
+        Node after = temp.next;
+        Node before = null;
         for (int i = 0; i < length; i++) {
             after = temp.next;
             temp.next = before;
@@ -158,10 +150,10 @@ public class LinkedList {
         }
     }
     
-    public LLNode findMiddleNode() {
+    public Node findMiddleNode() {
     	if(head==null) return null;
-    	LLNode slow = head;
-    	LLNode fast = head;
+    	Node slow = head;
+    	Node fast = head;
     	while(fast!=null && fast.next!=null) {
     		slow = slow.next;
     		fast = fast.next.next;
@@ -171,8 +163,8 @@ public class LinkedList {
     
     public boolean hasLoop() {
     	if(head==null) return false;
-    	LLNode slow = head;
-    	LLNode fast = head;
+    	Node slow = head;
+    	Node fast = head;
     	while(fast!=null && fast.next!=null) {
     		slow = slow.next;
     		fast = fast.next.next;
@@ -181,9 +173,9 @@ public class LinkedList {
     	return false;
     }
     
-    public LLNode findKthFromEnd(int k) {
-    	LLNode fast = head;
-    	LLNode slow = head;
+    public Node findKthFromEnd(int k) {
+    	Node fast = head;
+    	Node slow = head;
     	for(int i=0; i<k; i++) {
     		if(fast==null) return null;
     		fast = fast.next;
@@ -198,8 +190,8 @@ public class LinkedList {
     
     public void removeDuplicates() {
     	Set<Integer> values = new HashSet<>();
-    	LLNode current = head;
-    	LLNode previous = null;
+    	Node current = head;
+    	Node previous = null;
     	while(current != null){
     		if(values.contains(current.value)) {
     			previous.next = current.next;
@@ -214,15 +206,15 @@ public class LinkedList {
     
     public void reverseBetween(int m, int n) {
     	if(head==null) return;
-    	LLNode dummy = new LLNode(0);
+    	Node dummy = new Node(0);
     	dummy.next = head;
-    	LLNode previous = dummy;
+    	Node previous = dummy;
     	
     	for(int i=0; i<m; i++) previous = previous.next;
     	
-    	LLNode current = previous.next;
+    	Node current = previous.next;
     	for(int i=0; i<n-m; i++) {
-    		LLNode temp = current.next;
+    		Node temp = current.next;
     		current.next = temp.next;
     		temp.next = previous.next;
     		previous.next = temp;
@@ -234,11 +226,11 @@ public class LinkedList {
     public void partitionList(int x) {
         if (head == null) return;
  
-        LLNode dummy1 = new LLNode(0);
-        LLNode dummy2 = new LLNode(0);
-        LLNode prev1 = dummy1;
-        LLNode prev2 = dummy2;
-        LLNode current = head;
+        Node dummy1 = new Node(0);
+        Node dummy2 = new Node(0);
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+        Node current = head;
  
         while (current != null) {
             if (current.value < x) {
