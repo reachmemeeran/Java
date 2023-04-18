@@ -2,8 +2,9 @@ package com.meeran.datastructure;
 
 public class Node {
 	int value;
-	Node next, prev;
-	Node left,right;
+	Node next, prev; // Linked List
+	Node left,right; // Tree
+	String key; // Hash Table
 	
 	public Node() {
 	}
@@ -16,6 +17,11 @@ public class Node {
 		this.value = val;
 		this.left = left;
 		this.right = right;
+	}
+	
+	public Node(String key, int value) {
+		this.key=key;
+		this.value=value;
 	}
 	
 	
