@@ -7,11 +7,11 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 
-class Graph{
+class GraphTr{
 	List<List<Integer>> graphArr;
 	int node;
 	
-	Graph(int node){
+	GraphTr(int node){
 		this.node=node;
 		graphArr = new ArrayList<>();
 		for(int i=0; i<node; i++)graphArr.add(new ArrayList<Integer>());
@@ -23,7 +23,7 @@ class Graph{
 }
 
 class PrintGraph{
-	void printGraphDFT(Graph graph, int start){
+	void printGraphDFT(GraphTr graph, int start){
 		Stack<Integer> stack = new Stack<Integer>();
 		stack.push(start);
 		
@@ -35,7 +35,7 @@ class PrintGraph{
 		}
 	}
 	
-	void printGraphBFT(Graph graph, int start) {
+	void printGraphBFT(GraphTr graph, int start) {
 		Queue<Integer> queue = new LinkedList<Integer>();
 		
 		queue.add(start);
@@ -58,7 +58,7 @@ class PrintGraph{
 
 public class GraphTraversal{
 	public static void main(String args[]) {
-		Graph graph = new Graph(6);
+		GraphTr graph = new GraphTr(6);
 		
 		graph.addedges(0, 1);
 		graph.addedges(1, 3);
@@ -68,9 +68,9 @@ public class GraphTraversal{
 		
 		PrintGraph printGraph = new PrintGraph();
 		
-		System.out.print("Print the Graph in Deapth First Traversal : ");
+		System.out.print("Print the GraphTr in Deapth First Traversal : ");
 		printGraph.printGraphDFT(graph, 0);
-		System.out.print("\nPrint the Graph in Breadth First Traversal : ");
+		System.out.print("\nPrint the GraphTr in Breadth First Traversal : ");
 		printGraph.printGraphBFT(graph, 0);
 		
 	}
