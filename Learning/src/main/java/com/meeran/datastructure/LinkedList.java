@@ -39,6 +39,10 @@ public class LinkedList {
     public Node getTailNode(){
         return tail;
     }
+    
+	private int getLength() {
+		return length;
+	}
 
     //Insert last
     void append(int value){
@@ -249,6 +253,68 @@ public class LinkedList {
         head = dummy1.next;
     }  
     
+    public void insertionSort() {
+		if (length < 2) {
+			return; // List is already sorted
+		}
+ 
+		Node sortedListHead = head;
+		Node unsortedListHead = head.next;
+		sortedListHead.next = null;
+ 
+		while (unsortedListHead != null) {
+			Node current = unsortedListHead;
+			unsortedListHead = unsortedListHead.next;
+ 
+			if (current.value < sortedListHead.value) {
+				current.next = sortedListHead;
+				sortedListHead = current;
+			} else {
+				Node searchPointer = sortedListHead;
+				while (searchPointer.next != null && current.value > searchPointer.next.value) {
+					searchPointer = searchPointer.next;
+				}
+				current.next = searchPointer.next;
+				searchPointer.next = current;
+			}
+		}
+ 
+		head = sortedListHead;
+		Node temp = head;
+		while (temp.next != null) {
+			temp = temp.next;
+		}
+		tail = temp;
+	}
+    
+    public void merge(LinkedList otherList) {
+        Node otherHead = otherList.getHeadNode();
+        Node dummy = new Node(0);
+        Node current = dummy;
+ 
+        while (head != null && otherHead != null) {
+            if (head.value < otherHead.value) {
+                current.next = head;
+                head = head.next;
+            } else {
+                current.next = otherHead;
+                otherHead = otherHead.next;
+            }
+            current = current.next;
+        }
+ 
+        if (head != null) {
+            current.next = head;
+        } else {
+            current.next = otherHead;
+            tail = otherList.getTailNode();
+        }
+ 
+        head = dummy.next;
+        length += otherList.getLength();
+    }
+    
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LinkedList ll = new LinkedList(4);
@@ -340,6 +406,39 @@ public class LinkedList {
 
         System.out.println("\nLL after partitionList:");
         ll.printLinkedList(); 
+        
+        
+        LinkedList myLinkedList = new LinkedList(4);
+        myLinkedList.append(2);
+        myLinkedList.append(6);
+        myLinkedList.append(5);
+        myLinkedList.append(1);
+        myLinkedList.append(3);
+
+
+        System.out.println("Unsorted Linked List:");
+        myLinkedList.printLinkedList();
+
+        myLinkedList.insertionSort();
+
+        System.out.println("\nSorted Linked List:");
+        myLinkedList.printLinkedList();
+        
+        
+        LinkedList l1 = new LinkedList(1);
+        l1.append(3);
+        l1.append(5);
+        l1.append(7);
+        
+        LinkedList l2 = new LinkedList(2);
+        l2.append(4);
+        l2.append(6);
+        l2.append(8);
+        
+        l1.merge(l2);
+
+        System.out.println("Merged Linked List:");
+        l1.printLinkedList();
 	}
 
 }
