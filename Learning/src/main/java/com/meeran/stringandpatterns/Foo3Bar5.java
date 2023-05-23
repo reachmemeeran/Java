@@ -13,7 +13,7 @@ public class Foo3Bar5 {
 		if(number%5==0) result.append("Bar");
 		
 		for(char ch : Integer.toString(number).toCharArray())  result.append(getFooOrBar(ch));
-		return result.toString();
+		return number <0 ? "-"+result.toString() : result.toString();
 	}
 
 	private static String getFooOrBar(char ch) {
@@ -30,6 +30,7 @@ public class Foo3Bar5 {
 		assertEquals("FooBarFooBar", fooOrBar(135));
 		assertEquals("", fooOrBar(0));
 		assertEquals("", fooOrBar(19));
+		assertEquals("-FooFoo", fooOrBar(-3));
 	}
 
 }
