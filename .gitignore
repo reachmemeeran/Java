@@ -25,4 +25,9 @@
 hs_err_pid*
 replay_pid*
 
+# idea files
+.idea/
 
+.DS_Store
+
+out/
