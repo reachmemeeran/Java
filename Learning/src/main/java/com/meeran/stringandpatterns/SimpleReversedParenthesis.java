@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Random;
 import java.util.Stack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SimpleReversedParenthesis {
 	public static int simpleReversedParenthesis(String s){

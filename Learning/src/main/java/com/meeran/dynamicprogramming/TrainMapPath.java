@@ -1,7 +1,5 @@
 package com.meeran.dynamicprogramming;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
@@ -10,8 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-import org.junit.Test;
 
 public class TrainMapPath {
 
@@ -23,7 +19,7 @@ public class TrainMapPath {
 	 * in the 'neighbours' field. Two station objects with the same name are equal
 	 * therefore they are considered to be same station.
 	 */
-	private static class Station {
+	public static class Station {
 		private String name;
 		private List<Station> neighbours;
 
@@ -32,15 +28,15 @@ public class TrainMapPath {
 			this.neighbours = new ArrayList<>(3);
 		}
 
-		String getName() {
+		public String getName() {
 			return name;
 		}
 
-		void addNeighbour(Station v) {
+		public void addNeighbour(Station v) {
 			this.neighbours.add(v);
 		}
 
-		List<Station> getNeighbours() {
+		public List<Station> getNeighbours() {
 			return this.neighbours;
 		}
 
@@ -63,7 +59,7 @@ public class TrainMapPath {
 	 * stations is of same constant distance unit. This implies that shortest
 	 * distance between any 2 stations depends only on number of stations in between
 	 */
-	private static class TrainMap {
+	public static class TrainMap {
 
 		private HashMap<String, Station> stations;
 
@@ -86,7 +82,7 @@ public class TrainMapPath {
 				throw new IllegalArgumentException("From station is null");
 			}
 			if (toStation == null) {
-				throw new IllegalArgumentException("From station is null");
+				throw new IllegalArgumentException("To station is null");
 			}
 			fromStation.addNeighbour(toStation);
 			toStation.addNeighbour(fromStation);
@@ -123,7 +119,6 @@ public class TrainMapPath {
 			}
 			Collections.reverse(path);
 			return path;
-
 		}
 
 		public static String convertPathToStringRepresentation(List<Station> path) {
@@ -132,32 +127,5 @@ public class TrainMapPath {
 			}
 			return path.stream().map(Station::getName).reduce((s1, s2) -> s1 + "->" + s2).get();
 		}
-	}
-
-	@Test
-	public void testShortestPath() {
-		TrainMap trainMap = new TrainMap();
-
-		trainMap.addStation("King's Cross St Pancras").addStation("Angel").addStation("Old Street")
-				.addStation("Moorgate").addStation("Farringdon").addStation("Barbican").addStation("Russel Square")
-				.addStation("Holborn").addStation("Chancery Lane").addStation("St Paul's").addStation("Bank");
-
-		trainMap.connectStations(trainMap.getStation("King's Cross St Pancras"), trainMap.getStation("Angel"))
-				.connectStations(trainMap.getStation("King's Cross St Pancras"), trainMap.getStation("Farringdon"))
-				.connectStations(trainMap.getStation("King's Cross St Pancras"), trainMap.getStation("Russel Square"))
-				.connectStations(trainMap.getStation("Russel Square"), trainMap.getStation("Holborn"))
-				.connectStations(trainMap.getStation("Holborn"), trainMap.getStation("Chancery Lane"))
-				.connectStations(trainMap.getStation("Chancery Lane"), trainMap.getStation("St Paul's"))
-				.connectStations(trainMap.getStation("St Paul's"), trainMap.getStation("Bank"))
-				.connectStations(trainMap.getStation("Angel"), trainMap.getStation("Old Street"))
-				.connectStations(trainMap.getStation("Old Street"), trainMap.getStation("Moorgate"))
-				.connectStations(trainMap.getStation("Moorgate"), trainMap.getStation("Bank"))
-				.connectStations(trainMap.getStation("Farringdon"), trainMap.getStation("Barbican"))
-				.connectStations(trainMap.getStation("Barbican"), trainMap.getStation("Moorgate"));
-
-		String solution = "King's Cross St Pancras->Russel Square->Holborn->Chancery Lane->St Paul's";
-
-		assertEquals(solution, TrainMap
-				.convertPathToStringRepresentation(trainMap.shortestPath("King's Cross St Pancras", "St Paul's")));
 	}
 }

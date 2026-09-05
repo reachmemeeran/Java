@@ -2,7 +2,7 @@ package com.meeran.stringandpatterns;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LongestCommonSubSequence {
 	static String lcs_recurrsion(String a, String b) {

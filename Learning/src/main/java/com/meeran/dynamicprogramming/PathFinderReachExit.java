@@ -1,12 +1,8 @@
 package com.meeran.dynamicprogramming;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-
-import org.junit.Test;
 
 public class PathFinderReachExit {
 
@@ -74,32 +70,10 @@ public class PathFinderReachExit {
 	}
 
 	private static void moveToQueue(Character[][] mazeArray, boolean[][] isSpotVisited, Queue<int[]> moveQueue, int x,
-			int y, int d) {
+									int y, int d) {
 		if (!isSpotVisited[x][y] && mazeArray[x][y] == '.') {
 			isSpotVisited[x][y] = true;
 			moveQueue.add(new int[] { x, y, d });
 		}
-	}
-
-	@Test
-	public void sampleTests() {
-
-		String a = ".W.\n" + ".W.\n" + "...",
-
-				b = ".W.\n" + ".W.\n" + "W..",
-
-				c = "......\n" + "......\n" + "......\n" + "......\n" + "......\n" + "......",
-
-				d = "......\n" + "......\n" + "......\n" + "......\n" + ".....W\n" + "....W.";
-
-		assertEquals(true, PathFinderReachExit.pathFinderReachExit(a));
-		assertEquals(false, PathFinderReachExit.pathFinderReachExit(b));
-		assertEquals(true, PathFinderReachExit.pathFinderReachExit(c));
-		assertEquals(false, PathFinderReachExit.pathFinderReachExit(d));
-		
-		assertEquals(true, PathFinderReachExit.pathFinderShortPath(a));
-		assertEquals(false, PathFinderReachExit.pathFinderShortPath(b));
-		assertEquals(true, PathFinderReachExit.pathFinderShortPath(c));
-		assertEquals(false, PathFinderReachExit.pathFinderShortPath(d));
 	}
 }

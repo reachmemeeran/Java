@@ -1,9 +1,9 @@
 package com.meeran.stringandpatterns;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class JadenCase {
 	public String toJadenCase(String phrase) {

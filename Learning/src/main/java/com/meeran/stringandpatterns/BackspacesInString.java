@@ -2,7 +2,7 @@ package com.meeran.stringandpatterns;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BackspacesInString {
 	public String cleanString(String s) {

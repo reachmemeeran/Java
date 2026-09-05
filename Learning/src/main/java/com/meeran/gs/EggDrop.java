@@ -2,7 +2,7 @@ package com.meeran.gs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /*
  * dp[M][K]means that, given K eggs and M moves,

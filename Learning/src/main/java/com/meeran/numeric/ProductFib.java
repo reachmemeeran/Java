@@ -2,7 +2,7 @@ package com.meeran.numeric;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ProductFib {
 	public static long[] productFib(long prod) {
