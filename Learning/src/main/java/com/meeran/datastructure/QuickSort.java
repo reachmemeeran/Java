@@ -1,11 +1,9 @@
 package com.meeran.datastructure;
 
-import java.util.Arrays;
-
 public class QuickSort {
 
-	private static void quickSort(int[] array) {
-		quickSort(array, 0, array.length-1);
+	public static void quickSort(int[] array) {
+		quickSort(array, 0, array.length - 1);
 	}
 
 	private static void quickSort(int[] array, int left, int right) {
@@ -34,12 +32,4 @@ public class QuickSort {
 		array[i] = array[j];
 		array[j] = temp;
 	}
-
-	public static void main(String[] args) {
-		int[] array = {4,6,1,7,3,2,5};
-		System.out.println("Array - "+Arrays.toString(array));
-		quickSort(array);
-		System.out.println("Sorted Array - "+Arrays.toString(array));
-	}
-
 }
