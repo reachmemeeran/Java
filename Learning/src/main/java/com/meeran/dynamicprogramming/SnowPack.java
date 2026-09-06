@@ -2,8 +2,6 @@ package com.meeran.dynamicprogramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
-
 //Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 
 /*

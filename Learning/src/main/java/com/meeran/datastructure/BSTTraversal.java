@@ -16,66 +16,11 @@ import java.util.LinkedList;
 */
 
 class BSTTraversal {
-	public static void main(String args[]) {
-// root
-		Node node = new Node(1);
-
-// Left side of the tree
-		node.left = new Node(2);
-		node.left.left = new Node(3);
-		node.left.right = new Node(4);
-
-		node.left.left.left = new Node(5);
-		node.left.left.right = new Node(6);
-
-		node.left.right.left = new Node(7);
-		node.left.right.right = new Node(8);
-
-// Right side of the tree
-		node.right = new Node(9);
-		node.right.left = new Node(10);
-		node.right.right = new Node(11);
-
-		node.right.left.left = new Node(12);
-		node.right.left.right = new Node(13);
-
-		node.right.right.left = new Node(14);
-		node.right.right.right = new Node(15);
-
-		PrintTreeNodeData tree = new PrintTreeNodeData();
-		System.out.print("\nIn-Order Traversal is : ");
-		tree.inOrder(node);
-
-		System.out.print("\nPre-Order Traversal is : ");
-		tree.preOrder(node);
-
-		System.out.print("\nPost-Order Traversal is : ");
-		tree.postOrder(node);
-
-		System.out.print("\nLeft side of the Tree is : " + node.value + " ");
-		tree.leftSide(node.left);
-
-		System.out.print("\nRight side of the Tree is : " + node.value + " ");
-		tree.rightSide(node.right);
-
-		System.out.print("\nOutline of the Tree is : ");
-		tree.leftSideOutline(node.left);
-		System.out.print(node.value + " ");
-		tree.rightSide(node.right);
-
-		int depth = tree.depthOfTree(node, 1);
-		System.out.print("\nDepth of the Tree is : " + depth);
-
-		System.out.println("\nTree is : ");
-		tree.printTree(node, depth);
-
-	}
+	// Kept as a structural definition class without main
 }
 
-
-
 class PrintTreeNodeData {
-//nLR
+	//nLR
 	public void preOrder(Node node) {
 		if (node == null) {
 			return;
@@ -85,7 +30,7 @@ class PrintTreeNodeData {
 		preOrder(node.right);
 	}
 
-//LnR
+	//LnR
 	public void inOrder(Node node) {
 		if (node == null) {
 			return;
@@ -95,7 +40,7 @@ class PrintTreeNodeData {
 		inOrder(node.right);
 	}
 
-//LRn
+	//LRn
 	public void postOrder(Node node) {
 		if (node == null) {
 			return;
@@ -105,7 +50,7 @@ class PrintTreeNodeData {
 		System.out.print(node.value + " ");
 	}
 
-//L
+	//L
 	public void leftSide(Node node) {
 		if (node == null) {
 			return;
@@ -114,7 +59,7 @@ class PrintTreeNodeData {
 		leftSide(node.left);
 	}
 
-//R
+	//R
 	public void rightSide(Node node) {
 		if (node == null) {
 			return;
@@ -123,7 +68,7 @@ class PrintTreeNodeData {
 		rightSide(node.right);
 	}
 
-//L (reverse)
+	//L (reverse)
 	public void leftSideOutline(Node node) {
 		if (node == null) {
 			return;

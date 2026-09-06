@@ -1,14 +1,11 @@
 package com.meeran.datastructure;
 
-import java.util.Arrays;
-
 public class BubbleSelectionInsertionSort {
-	
-	
+
 	// BubbleSort
 	// Space Complexity - O(1)
 	// Time Complexity - O(n2)
-	private static void bubbleSort(int[] array) {
+	public static void bubbleSort(int[] array) {
 		for(int i=array.length-1; i>0; i--) {
 			for(int j=0; j<i; j++) {
 				if(array[j]>array[j+1]) {
@@ -19,11 +16,11 @@ public class BubbleSelectionInsertionSort {
 			}
 		}
 	}
-	
+
 	// SelectionSort
 	// Space Complexity - O(1)
 	// Time Complexity - O(n2)
-	private static void selectionSort(int[] array) {
+	public static void selectionSort(int[] array) {
 		for(int i=0; i<array.length; i++) {
 			int minIndex=i;
 			for(int j=i+1; j<array.length; j++) {
@@ -38,11 +35,11 @@ public class BubbleSelectionInsertionSort {
 			}
 		}
 	}
-	
+
 	// InsertionSort
 	// Space Complexity - O(1)
 	// Time Complexity - O(n2)
-	private static void insertionSort(int[] array) {
+	public static void insertionSort(int[] array) {
 		for(int i=1; i<array.length; i++) {
 			int temp = array[i];
 			int j = i-1;
@@ -53,19 +50,4 @@ public class BubbleSelectionInsertionSort {
 			}
 		}
 	}
-	
-	public static void main(String[] args) {	
-		int[] bubbleArray = {4,2,6,5,1,3};
-		bubbleSort(bubbleArray);
-		System.out.println("Bubble Sort -->    "+Arrays.toString(bubbleArray));
-		
-		int[] selectionArray = {4,2,6,5,1,3};
-		selectionSort(selectionArray);
-		System.out.println("Selection Sort --> "+Arrays.toString(selectionArray));
-		
-		int[] insertionArray = {4,2,6,5,1,3};
-		insertionSort(insertionArray);
-		System.out.println("Insertion Sort --> "+Arrays.toString(insertionArray));
-	}
-	
 }
