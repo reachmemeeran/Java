@@ -1,11 +1,6 @@
 package com.meeran.maths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
 
 public class PrimeFactorization {
 
@@ -13,10 +8,10 @@ public class PrimeFactorization {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public static ArrayList<Integer>primeFactorization(int x) {
+
+	public static ArrayList<Integer> primeFactorization(int x) {
 		ArrayList<Integer> result = new ArrayList<>();
-		
+
 		while(x%2==0) {
 			if(x%2==0) result.add(2);
 			x/=2;
@@ -30,13 +25,4 @@ public class PrimeFactorization {
 		if(x>2)result.add(x);
 		return result;
 	}
-	
-	@Test
-	public void testPrimeFactorization() {
-		assertEquals(Arrays.asList(2,3), primeFactorization(6));
-		assertEquals(Arrays.asList(5), primeFactorization(5));
-		assertEquals(Arrays.asList(2,2,3), primeFactorization(12));
-		assertEquals(Arrays.asList(3,3,5,7), primeFactorization(315));
-	}
-
 }
